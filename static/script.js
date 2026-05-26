@@ -605,7 +605,7 @@ document.addEventListener("click", function(e) {
     const menu = document.querySelector(".theme-menu");
     const dropdown = document.getElementById("themeOptions");
 
-    if (!menu.contains(e.target)) {
+    if (menu && dropdown && !menu.contains(e.target)) {
         dropdown.style.display = "none";
     }
 });
