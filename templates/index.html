@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="nature">
+
+<div class="navbar">
+    <div class="nav-right">📚 Smart Study Planner</div>
+    <div class="nav-right">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/tasks-page">Tasks</a>
+        <a href="/focus">Focus</a>
+        <a href="/ai">AI</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+
+<div class="container">
+    <h2>Add study Task</h2>
+
+    <div class="controls">
+        <input type="text" id="taskInput" placeholder="Enter study task">
+        <input type="number" id="duration" placeholder="Minutes">
+
+        <select id="priority">
+            <option value="1">🔥 High</option>
+            <option value="2" selected>⚡ Medium</option>
+            <option value="3">🌱 Low</option>
+        </select>
+
+        <input type="date" id="deadline">
+        
+        <button onclick="addTask()">Add</button>
+
+    </div>
+    <div style="text-align:center; margin: 15px 0;">
+        <button onclick="goToFocus()">Start Focus Session</button>
+    </div>
+    <div id="focusMode" class="focus-mode">
+        <h2 id="currentTask"></h2>
+        <h1 id="focusTimer">00:00</h1>
+
+        <button onclick="stopTimer()">Stop</button>
+    </div>
+    
+
+    <ul id="taskList"></ul>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

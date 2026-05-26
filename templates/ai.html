@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Suggestions</title>
+
+    <!-- ✅ CSS LINK (IMPORTANT) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body class="nature">
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-right">📚 Smart Study Planner</div>
+    <div class="nav-right">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/tasks-page">Tasks</a>
+        <a href="/focus">Focus</a>
+        <a href="/ai">AI</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <h2>🤖 AI Study Suggestions</h2>
+
+    <button onclick="getAI()">Get Suggestions</button>
+
+    <div id="aiBox"></div><br>
+
+    <button onclick="getSmartPlan()">📅 Generate Smart Plan</button>
+    
+    <div id="planBox"></div>
+
+
+</div>
+
+<!-- SCRIPT -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

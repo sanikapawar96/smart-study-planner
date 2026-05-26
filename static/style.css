@@ -1,0 +1,653 @@
+:root {
+    --bg: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    --card: rgba(255,255,255,0.6);
+    --text: #333;
+    --btn: linear-gradient(45deg, #ff9a9e, #a18cd1);
+}
+* {
+    transition: 
+        background 0.4s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f1f5f9;
+    --btn: linear-gradient(45deg, #6366f1, #0ea5e9);
+}
+.nature {
+    --bg: linear-gradient(135deg, #fff1f2, #fce7f3, #ede9fe);
+    --card: rgba(255,255,255,0.75);
+    --text: #4b5563;
+    --btn: linear-gradient(45deg, #f472b6, #a78bfa);
+
+    animation: bgFlow 12s ease infinite;
+    background-size: 300% 300%;
+}
+/* soft vibe */
+.nature .container {
+    backdrop-filter: blur(10px);
+}
+
+/* small flower feel using subtle gradients */
+.nature::before {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #fbcfe8, transparent);
+    top: 50px;
+    left: 50px;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.nature::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #ddd6fe, transparent);
+    bottom: 50px;
+    right: 50px;
+    filter: blur(80px);
+    z-index: -1;
+}
+.focus-theme {
+    --bg: linear-gradient(135deg, #fdcaca, #ff3d3d);
+    --card: rgba(255,255,255,0.2);
+    --text: #fff;
+    --btn: linear-gradient(45deg, #ff4d4d, #ff0000);
+}
+
+/* center focus box */
+.focus-theme .focus-wrapper {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+/* tomato glow */
+.focus-theme::before {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #ff0000, transparent);
+    top: 20%;
+    left: 30%;
+    filter: blur(120px);
+    z-index: -1;
+}
+body.nature::before,
+body.nature::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+}
+
+body.nature::before {
+    background: #fbcfe8;  /* pink glow */
+    top: 10%;
+    left: 10%;
+}
+
+body.nature::after {
+    background: #ddd6fe;  /* lavender glow */
+    bottom: 10%;
+    right: 10%;
+}
+/* bring content above */
+.container {
+    position: relative;
+    z-index: 0;
+}
+
+/* BODY */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    background-size: cover;
+    color: var(--text);
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    color: #333;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 9999;
+}
+
+.nav-left {
+    font-size: 20px;
+    font-weight: bold;
+}
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    white-space: nowrap; /* 🚨 PREVENT WRAP */
+}
+.nav-right a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-right a:hover {
+    color: #6c63ff;
+}
+
+/* MAIN CARD */
+.container {
+    width: 540px;
+    margin: 40px auto;
+    padding: 25px;
+
+    background: var(--card);
+    color: var(--text);
+    backdrop-filter: blur(12px);
+
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    animation: fadeIn 0.5s ease;
+}
+
+/* INPUT SECTION */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    background: var(--card);
+    color: var(--text);
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    flex: 1;
+}
+
+/* BUTTONS */
+button {
+    background: var(--btn);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* TASK LIST */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* TASK CARD */
+.task-card {
+    background: var(--card);
+    color: var(--text);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task-header h3{
+    margin: 0;
+    font-size: 16px;
+    word-break: break-word;
+    white-space: normal;
+}
+.badge {
+    background: rgba(255,255,255,0.2);
+    color: var(--text);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+/* STATUS */
+.task-status {
+    margin-top: 8px;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* STATS */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    background: var(--card);
+    color: var(--text);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* FOCUS MODE */
+.focus-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: var(--card);
+    color: var(--text);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    z-index: 1000;
+}
+
+.focus-mode h1 {
+    font-size: 60px;
+}
+.task-status {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.done-task {
+    opacity: 0.6;
+
+}
+.controls input,
+.controls select {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* 🌸 Focus Page UI */
+
+.focus-wrapper {
+    width: 400px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    background: var(--card);
+    color: var(--text);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+.focus-wrapper h2 {
+    margin-bottom: 15px;
+}
+
+.task-dropdown {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+#focusTimer {
+    font-size: 60px;
+    color: var(--text);
+}
+
+.focus-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: var(--btn);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.focus-buttons button:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: var(--card);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #f9a8d4, #c4b5fd);
+    transition: width 0.5s ease;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.timer-circle {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 20px auto;
+}
+
+.timer-circle svg {
+    transform: rotate(-90deg);
+}
+
+.timer-circle circle {
+    fill: none;
+    stroke-width: 10;
+}
+
+.timer-circle .bg {
+    stroke: #eee;
+}
+
+.timer-circle .progress {
+    stroke: #c4b5fd; /* lavender */
+    stroke-dasharray: 628;
+    stroke-dashoffset: 628;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: bold;
+}
+.ai-card {
+    background: var(--card);
+    color: var(--text); /* lavender */
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-weight: 500;
+    animation: fadeIn 0.4s ease;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.ai-card:hover {
+    transform: scale(1.03);
+    background: #e9d5ff;
+}
+.task-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+h1, h2, h3, p, span, div {
+    color: var(--text) ;
+}
+#progressText {
+    color: var(--text);
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+.task-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+}
+.task-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+}
+#focusList .task-card,
+#overdueList .task-card {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.plan-card {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+}
+.today-plan {
+    border: 2px solid #6c63ff;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.4);
+}
+.theme-menu {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+    z-index: 10000;
+}
+
+.theme-dropdown {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 150px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 10000;
+    animation: fadeIn 0.2s ease;
+}
+
+.theme-dropdown div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.theme-dropdown div:hover {
+    background: #eee;
+}
+
+/* different colors */
+.task-actions .focus {
+    background: #c4b5fd !important; /* lavender */
+}
+
+.task-actions .done {
+    background: #f9a8d4 !important; /* pink */
+}
+
+.task-actions .delete {
+    background: #93c5fd !important; /* blue */
+}
+body.dark {
+    background: #111;
+    color: #fff;
+}
+
+body.dark .navbar {
+    background: #1e1e1e;
+}
+body.dark .navbar a {
+    color: #fff;
+}
+
+body.dark .nav-right a {
+    color: white;
+}
+body.dark .nav-right {
+    color: white;
+}
+body.dark .nav-left {
+    color: white;
+}
+
+body.dark .task-status {
+    color: #4caf50;
+}
+.focus-theme .timer-circle {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 20px auto;
+    border-radius: 50%;
+
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #d90429);
+
+    box-shadow: 
+        inset -10px -10px 20px rgba(0,0,0,0.2),
+        inset 10px 10px 20px rgba(255,255,255,0.2),
+        0 10px 25px rgba(0,0,0,0.2);
+}
+.focus-theme .timer-circle svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.focus-theme .timer-circle::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-20deg);
+
+    width: 40px;
+    height: 20px;
+    background: #2ecc71;
+    border-radius: 50%;
+}
+.petal {
+    position: fixed;
+    top: 0;
+    width: 12px;
+    height: 12px;
+
+    background: radial-gradient(circle, #f9a8d4, #f472b6);
+    border-radius: 50% 50% 50% 0;
+
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 1;
+
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) translateX(0);
+    }
+    100% {
+        transform: translateY(100vh) translateX(50px);
+    }
+}
+.navbar {
+    position: relative;
+    z-index: 9999;
+}
+
+.container {
+    position: relative;
+    z-index: 0;
+}
+body.nature .container,
+body.nature .task-card {
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.4);
+}
+body.nature .task-card:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.ripple {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+
+    background: radial-gradient(circle, #f9a8d4, transparent);
+    animation: rippleAnim 0.6s ease-out;
+}
+
+@keyframes rippleAnim {
+    0% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(4);
+    }
+}
+@keyframes bgFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+body:not(.nature) .petal {
+    display: none;
+}  
+body:not(.nature) .ripple {
+    display: none;
+}

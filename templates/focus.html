@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Focus Mode</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="focus-theme">
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/tasks-page">Tasks</a>
+</div>
+
+<div class="focus-wrapper">
+
+    <h2>🎯 Focus Mode</h2>
+
+    <select id="taskSelect" class="task-dropdown"></select>
+     
+    <div class="timer-circle">
+
+    <svg width="220" height="220">
+        <circle cx="110" cy="110" r="100" class="bg"></circle>
+        <circle cx="110" cy="110" r="100" class="progress" id="progressCircle"></circle>
+    </svg>
+
+    <div class="timer-text" id="focusTimer">25:00</div>
+    </div>
+    <p id="motivationText"></p>
+    
+    <div class="focus-buttons">
+        <button onclick="startFocus()">Start</button>
+        <button onclick="stopTimer()">Stop</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resumeTimer()">Resume</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

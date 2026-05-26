@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="nature">
+
+<div class="navbar">
+
+    <div class="nav-left">📚 Smart study Planner</div>
+
+    <div class="nav-center">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/tasks-page">Tasks</a>
+        <a href="/focus">Focus</a>
+        <a href="/ai">AI</a>
+
+        <!-- Theme Dropdown -->
+        <div class="theme-menu" onclick="toggleThemeMenu()">
+            🎨 Theme
+            <div id="themeOptions" class="theme-dropdown">
+                <div onclick="setTheme('default')">🌸 Default</div>
+                <div onclick="setTheme('dark')">🌙 Dark</div>
+                <div onclick="setTheme('nature')">✨ Soft</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-right">
+        <a href="/logout">Logout</a>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <h2>Study Status</h2>
+
+    <div class="stats">
+        <div>Total Tasks: <span id="totalTasks">0</span></div>
+        <div>Completed: <span id="completedTasks">0</span></div>
+        <div>Total Study Time: <span id="studyTime">0</span> min</div>
+    </div>
+
+<h3>🔥 Today’s Focus</h3>
+<div id="focusList"></div>
+
+<h3>⚠️ Overdue Tasks</h3>
+<div id="overdueList"></div>
+
+<h3>📊 Daily Progress</h3>
+
+<div class="progress-container">
+    <div id="progressBar" class="progress-bar"></div>
+</div>
+
+<p id="progressText">0%</p>
+
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
